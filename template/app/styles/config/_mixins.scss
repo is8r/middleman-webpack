@@ -1,0 +1,42 @@
+@mixin breakpoint-down($name: md, $breakpoints: $grids-breakpoints) {
+  $map: map-get($breakpoints, $name);
+  @media (max-width: $map) {
+    @content;
+  }
+}
+
+@mixin breakpoint-up($name: md, $breakpoints: $grids-breakpoints) {
+  $map: map-get($breakpoints, $name);
+  @media (min-width: $map) {
+    @content;
+  }
+}
+
+@mixin hide-text {
+  overflow: hidden;
+  &:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 100%;
+  }
+}
+
+@mixin fa($content: '\f105') {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-indent: 0;
+  @if ($content) {
+    content: $content;
+  }
+}
+
+@mixin font($size: 1em, $line-height: normal, $weight: normal) {
+  font-family: $font-sans;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
